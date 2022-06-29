@@ -19,6 +19,7 @@ function App() {
       setTextError("Поле ввода не должно быть пустым!");
     } else {
       setTextError("");
+      setMessage("");
     }
   };
 
@@ -27,6 +28,7 @@ function App() {
     console.log(text);
     setSent(true);
     setMessage("Сообщение успешно отправлено");
+    setText("");
   };
 
   return (
@@ -44,8 +46,10 @@ function App() {
           Отправить
         </button>
       </form>
-      {textDirty && textError && <div style={{ color: "red" }}>{textError}</div>}
-      {setSent && !textError && <div style={{ color: "green" }}>{message}</div>}
+      {textDirty && textError && (
+        <div style={{ color: "red" }}>{textError}</div>
+      )}
+      {sent && !textError && <div style={{ color: "green" }}>{message}</div>}
     </div>
   );
 }
